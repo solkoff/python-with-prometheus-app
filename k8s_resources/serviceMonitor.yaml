@@ -3,7 +3,7 @@ kind: ServiceMonitor
 metadata:
   name: python-with-prometheus
   labels:
-    app: python-with-prometheus
+    app: python-with-prometheus # belongs to the same app 
     release: prometheus
 spec:
   selector:
