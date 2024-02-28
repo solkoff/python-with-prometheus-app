@@ -1,8 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: slytherin-svc
+  name: python-with-prometheus
+  labels:
+    app: python-with-prometheus
+    job: web-service
 spec:
+  type: ClusterIP
   selector:
     app: python-with-prometheus
   ports:

@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: python-with-prometheus
+  labels:
+    app: python-with-prometheus
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: python-with-prometheus # points to the label of k8s service
+  jobLabel: job # it will match k8s service -> job: web-service
+  endpoints:
+  - interval: 30s
+    port: app
+    path: "/metrics"  
+    
+
