@@ -6,3 +6,4 @@
 2. `app_hello_world_total` is a Counter metric, and increments each time the `https://localhost:5000` endpoint is hit.
 3. `count:up1` -> metrics of number of pods of that application
 
+The metrics are exposed at "/metrics" ednpoint
