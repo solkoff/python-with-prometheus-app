@@ -1,0 +1,24 @@
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: alertmanagerconfig-pod
+  labels:
+    release: prometheus
+spec:
+  route:
+    groupBy: ['severity']
+    groupWait: 30s
+    groupInterval: 5m
+    repeatInterval: 10h
+    receiver: 'slack'
+  
+  receivers:
+  - name: 'slack'
+    slackConfigs:
+    - apiURL:
+        name: slack-webhook #name of k8s secrets
+        key: url  # key/field in the secret
+      channel: '#alert'
+      iconEmoji: ':bell:'
+      sendResolved: true
+      text: "<channel> \nsummary: {{ .CommonAnnotations.summary }}\ndescription: {{ .CommonAnnotations.description }}"
